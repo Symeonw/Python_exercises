@@ -63,6 +63,11 @@ True or "42"
 [] + [] == []
 # Output: {}: Correction: Error
 {} + {}
+price = 3
+the_little_mermaid = 3
+brother_bear = 5
+hercules = 1
+total_price = price*the_little_mermaid + price*brother_bear = price*hercules
 
 def number_of_days_rented(days):
     for day in days:
@@ -79,32 +84,15 @@ total_income = sum({Company_income[x] * Company_hours[x] for x in Company_income
 
 print(total_income)
 
-Class_avaliable = {"clasS":True, "Class": False}
-Class_Schedule = {"class": (11,2) }
-def can_be_enrolled(class_name,start_time,end_time):
-    for clasS in Class_avaliable:
-        if clasS == class_name and clasS == True:
-            Can_attend = True
-        else:
-            return False****
-    for (starttime,endtime) in Class_Schedule:
-        if start_time > starttime and end_time < endtime:
-            return False
-        else:
-            print ("Can attend")
-
-can_be_enrolled("class", 11,2)
+class_space = False
+class_schedule_comp = False
+student_able_attend = class_space and class_schedule
 
     
-items = ["Apple", "Banana"]
-def valid_coupon(item_list, pmembership):
-    if pmembership == True:
-        print ("Valid")
-    else:
-        if items.size() > 2:
-            print ('Valid')
-        else:
-            return False
+has_pre_memebership = True
+has_more_2_items = False
+offer_not_expired = True
+valid = offer_not_expired and (has_more_2_items or has_pre_memebership)
 
 
 def valid_username_and_password(user_name,pass_word):
@@ -125,10 +113,10 @@ ________________________________________________________________________________
 
 fruits = ['mango', 'kiwi', 'strawberry', 'guava', 'pineapple', 'mandarin orange']
 
-upper_fruits = []
+uppercased_fruits = []
 
 for fruit in fruits:
-    upper_fruits.append(fruit.upper())
+    uppercased_fruits.append(fruit.upper())
 
 print(upper_fruits)
 
@@ -138,10 +126,9 @@ for fruit in fruits:
 
 print(capitalized_fruits)
 
-fruits_with_only_two_vowels = []
-vowels = ["a","e","i","o","u"]
 
-for fruit in fruits (set(vowels).intersection(fruit))*********
+fruits_with_only_two_vowels = [fruit for fruit in fruits if (fruit.count("a") + fruit.count("e") + fruit.count("i") + fruit.count("o") + fruit.count("u") == 2) ]
+print(fruits_with_only_two_vowels)
 
 fruits_5_char_more = []
 for fruit in fruits:
@@ -166,7 +153,21 @@ for fruit in fruits:
 
 print(fruits_char_less_5)
 
+Char_amount =[len(fruit) for fruit in fruits]
 
+print (Char_amount)
         
 
-        
+[fruit for fruit in fruits if "a" in fruit ]
+
+even_numbers = [number for number in numbers if number % 2 == 0]
+
+odd_numbers = [number for number in numbers if number % 2 != 0]
+
+positive_numbers = [number for number in numbers if number > 0]
+neg_numbers = [number for number in numbers if number < 0]
+two_dig_num = [number for number in numbers if abs(number) >= 10]
+num_square = [number ** 2 for number in numbers]
+odd_negative_numbers = [number for number in numbers if number < 0 and number % 2 == 0]
+numbers_plus_5 = [numbers + 5 for number in numbers]
+
