@@ -79,14 +79,94 @@ total_income = sum({Company_income[x] * Company_hours[x] for x in Company_income
 
 print(total_income)
 
-Class_avaliable = {"class":True, "Class": False}
-Class_Schedule = {"class": }
-def can_be_enrolled(data_1,data_2):
-    for class in Class_avaliable:
-        if class == data_1 and class == True:
+Class_avaliable = {"clasS":True, "Class": False}
+Class_Schedule = {"class": (11,2) }
+def can_be_enrolled(class_name,start_time,end_time):
+    for clasS in Class_avaliable:
+        if clasS == class_name and clasS == True:
             Can_attend = True
-            Else:
-             return False
-    for 
+        else:
+            return False****
+    for (starttime,endtime) in Class_Schedule:
+        if start_time > starttime and end_time < endtime:
+            return False
+        else:
+            print ("Can attend")
+
+can_be_enrolled("class", 11,2)
+
+    
+items = ["Apple", "Banana"]
+def valid_coupon(item_list, pmembership):
+    if pmembership == True:
+        print ("Valid")
+    else:
+        if items.size() > 2:
+            print ('Valid')
+        else:
+            return False
+
+
+def valid_username_and_password(user_name,pass_word):
+    if len(user_name) > 20:
+        return False
+    else:
+        if len(pass_word) < 5:
+            return False
+        else:
+            if pass_word == user_name:
+                return False
+            else:
+                return True
+
+valid_username_and_password("onefadsfadsfasdfasdfsdfa","dfdsd")
+
+____________________________________________________________________________________________
+
+fruits = ['mango', 'kiwi', 'strawberry', 'guava', 'pineapple', 'mandarin orange']
+
+upper_fruits = []
+
+for fruit in fruits:
+    upper_fruits.append(fruit.upper())
+
+print(upper_fruits)
+
+capitalized_fruits= []
+for fruit in fruits:
+    capitalized_fruits.append(fruit.capitalize())
+
+print(capitalized_fruits)
+
+fruits_with_only_two_vowels = []
+vowels = ["a","e","i","o","u"]
+
+for fruit in fruits (set(vowels).intersection(fruit))*********
+
+fruits_5_char_more = []
+for fruit in fruits:
+    if len(fruit) > 5:
+        fruits_5_char_more.append(fruit)
+
+print (fruits_5_char_more)
+
+fruits_5_char_match = []
+
+for fruit in fruits:
+    if len(fruit) == 5:
+        fruits_5_char_match.append(fruit)
+
+print(fruits_5_char_match)
+
+fruits_char_less_5 = []
+
+for fruit in fruits:
+    if len(fruit) < 5:
+        fruits_char_less_5.append(fruit)
+
+print(fruits_char_less_5)
+
+
         
 
+        
