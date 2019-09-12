@@ -107,7 +107,7 @@ def valid_username_and_password(user_name,pass_word):
             else:
                 return True
 
-valid_username_and_password("onefadsfadsfasdfasdfsdfa","dfdsd")
+valid_username_and_password("ddddd","ddddd")
 
 ____________________________________________________________________________________________
 
