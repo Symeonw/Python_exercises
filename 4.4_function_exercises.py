@@ -62,9 +62,60 @@ def apply_discount(origin_price,discount):
 apply_discount(100, 50)
 
 def handle_commas(x):
-    if x.isdigit() == True:
-        for x.replace(",","")
-    else:
-        print ("Error, is not digit.")
+    for n in x:
+        x = x.replace(",", "")
+        try:
+            int(n)
+            return x
+        except:
+            return "not int"
+        
+handle_commas("1,2,3,4")
 
-handle_commas(1,2,3,4)
+def get_letter_grade(x):
+    grade = ()
+    if isinstance(x, int) == False or x > 100 or x < 0:
+        print ("Must enter numerical grade greater than zero and less than 100!")
+    elif x > 89:
+        grade = "A"
+        return f"Grade is: {grade}"
+    elif x > 79:
+        grade = "B"
+        return f"Grade is: {grade}"
+    elif x > 69:
+        grade = "C"
+        return f"Grade is: {grade}"
+    elif x > 59:
+        grade = "D"
+        return f"Grade is: {grade}"
+        
+get_letter_grade(60)
+
+
+def remove_vowels(word):
+    z = list(word)
+    vowel = ["a","e","i","o","u"]
+    for n in z:
+        if set(vowel).intersection(n.upper().lower()):
+            z.remove(n)
+    word = ''.join(z)
+    return word
+
+remove_vowels("Dogsiodfaosdfaoefhasdof")
+
+def normalize_name(x):
+    for n in x:
+        x = x.replace(" ", "_").strip().lower()
+        vpi = ["@","%","$","#","^","&","*","(",")","+","=","~","`"]
+        new = list.x
+        for n in x:
+            if set(vpi).intersection(n):
+                x.remove(n)
+        else:
+            x = ''.join(new)
+            return x
+
+normalize_name("DGOIDFUS(^D&$&A%$D&SAf f ad a    )")
+
+
+
