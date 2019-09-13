@@ -103,17 +103,16 @@ def remove_vowels(word):
 
 remove_vowels("Dogsiodfaosdfaoefhasdof")
 
-def normalize_name(x):
-    for n in x:
-        x = x.replace(" ", "_").strip().lower()
-        vpi = ["@","%","$","#","^","&","*","(",")","+","=","~","`"]
-        new = list.x
-        for n in x:
-            if set(vpi).intersection(n):
-                x.remove(n)
-        else:
-            x = ''.join(new)
-            return x
+def normalize_name(word):
+    vpi = ["@","%","$","#","^","&","*","(",")","+","=","~","`"]
+    word = word.replace(" ", "_").strip().lower()
+    z = list(word)
+    for n in z:
+        if set(vpi).intersection(n):
+            z.remove(n)
+        
+    word = ''.join(z)
+    return word
 
 normalize_name("DGOIDFUS(^D&$&A%$D&SAf f ad a    )")
 
