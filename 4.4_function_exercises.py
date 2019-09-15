@@ -10,7 +10,7 @@ is_two(et)
 
 def is_vowel(x):
   vowel = ["a","e","i","o","u"]
-  if set(vowel).intersection(x.upper().lower()):
+  if set(vowel).intersection(x.upper().lower()) or len(x) == 1:
     return True
   else:
     return False
@@ -51,7 +51,7 @@ calculate_tip(.15, 10)
 
 def apply_discount(origin_price,discount):
     if discount > 1:
-        discount = discount/100
+        discount /= 100
         if discount < 0:
             print ("Error: discount must be greater than zero percent.")
         if origin_price < 0:
@@ -104,17 +104,25 @@ def remove_vowels(word):
 remove_vowels("Dogsiodfaosdfaoefhasdof")
 
 def normalize_name(word):
-    vpi = ["@","%","$","#","^","&","*","(",")","+","=","~","`"]
-    word = word.replace(" ", "_").strip().lower()
+    remove = ["@","%","$","#","^","&","*","(",")","+","=","~","`"]
+    word = word.strip().replace(" ", "_").lower()
     z = list(word)
+    new_list = []
     for n in z:
-        if set(vpi).intersection(n):
-            z.remove(n)
+        if not set(remove).intersection(n):
+            new_list.append(n)
         
-    word = ''.join(z)
+    word = ''.join(new_list)
     return word
 
-normalize_name("DGOIDFUS(^D&$&A%$D&SAf f ad a    )")
+normalize_name("DGOIDFUS(^D&$&A%$D&SAf f ad a    )    ")
 
+
+
+def cumsum(x):
+    z = [x[0]]
+    for y in x[1:]
+        z.append(sum[-1 + y])
+cumsum([1,2,3,4,5])
 
 
