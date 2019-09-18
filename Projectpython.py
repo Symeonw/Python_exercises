@@ -1,4 +1,3 @@
-#Starts Program
 def start():
   print ("~~~Welcome to your terminal checkbook!~~~\n \nWhat would you like to do? \n 1) View current account balance\n 2) Record new Debt\n 3) Record new Credit\n 4) Exit")
 
@@ -9,7 +8,7 @@ def start():
     ui_choice = input(" \nSelect option: ")
     if ui_choice.isdigit() == True and int(ui_choice) == 5:
       print("Additional instruction: Please enter a number between 1 and 4, such as 1,2,3 or 4.")
-    elif ui_choice.isdigit() == True and int(ui_choice) > 1 and int(ui_choice) <= 5:
+    elif ui_choice.isdigit() == True and int(ui_choice) >= 1 and int(ui_choice) <= 5:
       invalid_input == False
       break
     elif help_please == 5:
@@ -21,15 +20,32 @@ def start():
 debt_ledger_add = 0
 credit_ledger_add = 0
 inter_exit = ()
-
+debt_ledger = -100
+credit_ledger = 500
 not_exit = True
 while not_exit == True: 
+  
   if inter_exit == "N" or inter_exit == ():
     start()
+    inter_exit = ()
   ui_choice = int(ui_choice)  
-  inter_exit = ()
   if ui_choice == 1:    
-    print ("***Current acount balance place holder***")
+    if inter_exit == "Y":
+        inter_exit = ()
+        break
+    global general_ledger
+    general_ledger = credit_ledger + debt_ledger
+    print ('---------------------------------------')
+    print ("Current Balance is:",general_ledger)
+    while True:
+      print ('---------------------------------------')
+      inter_exit = input(" \nWould you like to remain on main menu?(Y/N)") 
+      if inter_exit == "Y":
+        pass
+      elif inter_exit == "N":
+        break
+      else:
+        print (" \n*Please enter 'Y' or 'N'.*")
 #Following is for recording new debts
   elif ui_choice == 2:
     if inter_exit == "N":
@@ -45,13 +61,13 @@ while not_exit == True:
     else:
       debtint = float(debtint)
       debt_ledger_add += debtint
-      global debt_ledger
-      debt_ledger = -100 - debt_ledger_add
+      debt_ledger -= debt_ledger_add
       debt_ledger = round(debt_ledger,2)
    
     while True:
       print('-----------------------------------------')
       if inter_exit == "Y":
+        inter_exit = ()
         break
       else:
         inter_exit = input(" \nAccepted input\n \nWould you like to enter an additional debt?(Y/N)")
@@ -70,8 +86,7 @@ while not_exit == True:
     print ("Loading Credit Recording Aparatus...")
     creditint = float(input("Please enter amount to credit: "))
     credit_ledger_add += creditint
-    global credit_ledger
-    credit_ledger = 500 + credit_ledger_add
+    credit_ledger += credit_ledger_add
     credit_ledger = round(credit_ledger,2)
     while True:
       print('-----------------------------------------')
@@ -96,4 +111,4 @@ while not_exit == True:
   elif ui_choice == 5:
     print("Additional instruction: Please enter a number between 1 and 4, such as 1,2,3 or 4.")
 
-general_ledger = credit_ledger + debt_ledger
+print ("***PROGRAM TERMINATED***")
