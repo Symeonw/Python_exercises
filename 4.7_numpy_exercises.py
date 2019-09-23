@@ -58,23 +58,26 @@ b = [
     [3, 4, 5],
     [6, 7, 8]
 ]
-bsum = [n + n for n in b]
-print(bsum)
 
 # Exercise 1 - refactor the following to use numpy. Use sum_of_b as the variable. **Hint, you'll first need to make sure that the "b" variable is a numpy array**
+np.asarray(b)
 sum_of_b = 0
 for row in b:
     sum_of_b += sum(row)
+print(sum_of_b)
 
 # Exercise 2 - refactor the following to use numpy. 
 min_of_b = min(b[0]) if min(b[0]) <= min(b[1]) else min(b[1])  
+minb = np.min(b)
 
 # Exercise 3 - refactor the following maximum calculation to find the answer with numpy.
 max_of_b = max(b[0]) if max(b[0]) >= max(b[1]) else max(b[1])
-
-
+max1 = numpy.max(b)
+print(max1)
 # Exercise 4 - refactor the following using numpy to find the mean of b
 mean_of_b = (sum(b[0]) + sum(b[1])) / (len([b[0]]) + len(b[1]))
+mean = numpy.mean(b)
+print(mean)
 
 # Exercise 5 - refactor the following to use numpy for calculating the product of all numbers multiplied together.
 product_of_b = 1
@@ -82,11 +85,16 @@ for row in b:
     for number in row:
         product_of_b *= number
 
+product = np.prod(b)
+print(product)
+
 # Exercise 6 - refactor the following to use numpy to find the list of squares 
 squares_of_b = []
 for row in b:
     for number in row:
         squares_of_b.append(number**2)
+
+np.square(b)
 
 
 # Exercise 7 - refactor using numpy to determine the odds_in_b
@@ -96,6 +104,10 @@ for row in b:
         if(number % 2 != 0):
             odds_in_b.append(number)
 
+num_odd = np.reshape(b,(1,6))
+print(num_odd[num_odd%2==0])
+
+
 
 # Exercise 8 - refactor the following to use numpy to filter only the even numbers
 evens_in_b = []
@@ -104,34 +116,47 @@ for row in b:
         if(number % 2 == 0):
             evens_in_b.append(number)
 
+num_even = np.reshape(b,(1,6))
+print(num_even[num_even%2==0])
+
 # Exercise 9 - print out the shape of the array b.
-
+np.shape(b)
 # Exercise 10 - transpose the array b.
-
+np.transpose(b)
 # Exercise 11 - reshape the array b to be a single list of 6 numbers. (1 x 6)
-
+np.reshape(b,(1,6))
 # Exercise 12 - reshape the array b to be a list of 6 lists, each containing only 1 number (6 x 1)
-
+np.reshape(b,(6,1))
 ## Setup 3
 c = [
     [1, 2, 3],
     [4, 5, 6],
     [7, 8, 9]
 ]
+np.asarray(c)
 
 # HINT, you'll first need to make sure that the "c" variable is a numpy array prior to using numpy array methods.
 # Exercise 1 - Find the min, max, sum, and product of c.
+np.max(c)
+np.min(c)
+np.sum(c)
+np.prod(c)
+
 
 # Exercise 2 - Determine the standard deviation of c.
-
+np.std(c)
 # Exercise 3 - Determine the variance of c.
-
+np.var(c)
 # Exercise 4 - Print out the shape of the array c
+np.shape(c)
 
 # Exercise 5 - Transpose c and print out transposed result.
+print(np.transpose(c))
+
 
 # Exercise 6 - Multiply c by the c-Transposed and print the result.
-
+prod = np.prod(np.transpose(c)) * np.prod(c)
+print(prod)
 # Exercise 7 - Write the code necessary to sum up the result of c times c transposed. Answer should be 261
 
 # Exercise 8 - Write the code necessary to determine the product of c times c transposed. Answer should be 131681894400.
