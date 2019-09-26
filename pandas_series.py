@@ -65,10 +65,7 @@ pd.cut(f, [1000000,2000000,3000000,40000000])
 f.plot.hist()
 e = [60, 86, 75, 62, 93, 71, 60, 83, 95, 78, 65, 72, 69, 81, 96, 80, 85, 92, 82, 78]
 e = pd.Series(e)
-e.min()
-e.max()
-e.mean()
-e.median()
+e.describe()
 e.plot.hist()
 def grade(x):
     if x > 89:
@@ -83,12 +80,14 @@ def grade(x):
 e.apply(grade)
 
 e = pd.Series([n + 100 - e.max() for n in list(e)])
+e
 
-
-x = list('hnvidduckkqxwymbimkccexbkmqygkxoyndmcxnwqarhyffsjpsrabtjzsypmzadfavyrnndndvswreauxovncxtwzpwejilzjrmmbbgbyxvjtewqthafnbkqplarokkyydtubbmnexoypulzwfhqvckdpqtpoppzqrmcvhhpwgjwupgzhiofohawytlsiyecuproguy')
-x = pd.Series(x)
+x = pd.Series(list('hnvidduckkqxwymbimkccexbkmqygkxoyndmcxnwqarhyffsjpsrabtjzsypmzadfavyrnndndvswreauxovncxtwzpwejilzjrmmbbgbyxvjtewqthafnbkqplarokkyydtubbmnexoypulzwfhqvckdpqtpoppzqrmcvhhpwgjwupgzhiofohawytlsiyecuproguy'))
+x.describe()
 x.mode()[0]
-x.apply(count_vowels)
+y = sum(x.apply(count_vowels))
+x.str.upper()
+x.value_count().head(6).plot.bar()
 
 
 
@@ -98,4 +97,59 @@ x.apply(count_vowels)
 x = lambda x, func: x + func(x)
 x(3, lambda x: x * x)
 
+import pandas as pd
+import numpy as np
 
+np.random.seed(123)
+
+students = ['Sally', 'Jane', 'Suzie', 'Billy', 'Ada', 'John', 'Thomas',
+            'Marie', 'Albert', 'Richard', 'Isaac', 'Alan']
+
+# randomly generate scores for each student for each subject
+# note that all the values need to have the same length here
+math_grades = np.random.randint(low=60, high=100, size=len(students))
+english_grades = np.random.randint(low=60, high=100, size=len(students))
+reading_grades = np.random.randint(low=60, high=100, size=len(students))
+
+df = pd.DataFrame({'name': students,
+                   'math': math_grades,
+                   'english': english_grades,
+                   'reading': reading_grades})
+
+
+df["passing_english"] = df.english>70
+df.sort_values(by=["passing_english"])
+
+df.sort_values(by=["passing_english","name"])
+df.sort_values(by=["passing_english","english"])
+df["mean_grade"] = (df.english + df.math + df.reading)/3
+
+
+
+from pydataset import data
+mpg = data("mpg")
+mpg.shape
+mpg.dtypes
+mpg.describe
+mpg.info
+mpg.rename(columns={"cty":"city"},inplace=True)
+mpg.rename(columns={"hwy":"highway"}, inplace=True)
+mpg["cvh"] = mpg.city > mpg.highway
+mpg.rename(columns={"class":"Class"}, inplace=True)
+mpg.sort_values(by=["cvh"])
+mpg["mileage_difference"] = mpg.highway - mpg.city
+mpg.sort_values(by="mileage_difference", ascending = False)
+mpg_compact = mpg[mpg.Class == "compact"].sort_values(by="highway", ascending = False)
+mpg_compact.highway.describe()
+mpg_dodge = mpg[mpg.manufacturer == "dodge"].sort_values(by="highway", ascending = False)
+mpg_dodge.highway.describe()
+mpg_dodge.max()
+mpg_dodge.min()
+
+dfm = data("Mammals")
+dfm.shape
+dfm.dtypes
+dfm.info
+dfm.describe
+dfm.loc[dfm["speed"]==dfm.speed.max()]
+dfm.specials.count
