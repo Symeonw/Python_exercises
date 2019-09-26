@@ -90,13 +90,6 @@ x.str.upper()
 x.value_count().head(6).plot.bar()
 
 
-
-
-
-
-x = lambda x, func: x + func(x)
-x(3, lambda x: x * x)
-
 import pandas as pd
 import numpy as np
 
@@ -130,8 +123,8 @@ from pydataset import data
 mpg = data("mpg")
 mpg.shape
 mpg.dtypes
-mpg.describe
-mpg.info
+mpg.describe()
+mpg.info()
 mpg.rename(columns={"cty":"city"},inplace=True)
 mpg.rename(columns={"hwy":"highway"}, inplace=True)
 mpg["cvh"] = mpg.city > mpg.highway
@@ -149,7 +142,7 @@ mpg_dodge.min()
 dfm = data("Mammals")
 dfm.shape
 dfm.dtypes
-dfm.info
-dfm.describe
+dfm.info()
+dfm.describe()
 dfm.loc[dfm["speed"]==dfm.speed.max()]
 dfm.specials.count
