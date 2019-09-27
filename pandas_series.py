@@ -146,3 +146,4 @@ dfm.info()
 dfm.describe()
 dfm.loc[dfm["speed"]==dfm.speed.max()]
 dfm.specials.count
+dfm[dfm.speed == dfm.speed.max()]
