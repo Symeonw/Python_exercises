@@ -21,5 +21,13 @@ def get_db_url(user,host,password,database_name):
     return url
 
 df = get_db_url(user, host, password, "employees")
-df = pd.read_sql('select * from employees as e join titles as t on t.emp_no = e.emp_no', url)
-df
+df_t = pd.read_sql('select * from titles', url)
+df_e = df.read_sql('select * from employees', url)
+unique_titles = df_t.groupby(df_t).count()
+unique_titles.rename(columns={"emp_no":"number_with_title"}, inplace=True)
+unique_titles = unique_titles.drop()
+
+df = df_t.groupby("emp_no").count()
+#group by employee number
+
+
